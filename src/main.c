@@ -1,8 +1,4 @@
-#include <unistd.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdio.h>
+#include "../Includes/decoder.h"
 
 typedef char i8;
 typedef unsigned char u8;
@@ -39,7 +35,7 @@ struct file_content
 	u32   size;
 };
 
-typdef struct s_pixel
+typedef struct s_pixel
 {
 	u32	pixel[4]; //Pixel = 4 Bytes = 1 Byte = 8 Bites
 
@@ -65,6 +61,11 @@ struct file_content   read_entire_file(char* filename)
 	return (struct file_content){file_data, file_size};
 }
 
+/*
+	1. int len = findRightCornerPixel() --> contains the length of msh
+	2. Allocate char *decoded_msg = malloc(sizeof(char) * (len + 1));
+	3. MAIN LOGIC
+*/
 char	*decode_msg(struct file_content file_content, size_t WIDTH, size_t HEIGHT)
 {
 	char	*decoded_msg; //Only Malloc
@@ -72,6 +73,7 @@ char	*decode_msg(struct file_content file_content, size_t WIDTH, size_t HEIGHT)
 	int		i;
 	int		k;
 
+	(void)decode_msg;
 	(void)file_content;
 	printf("In decode_msg Funktion\n");
 
@@ -130,7 +132,7 @@ int main(int argc, char** argv)
 	};
 	*/
 
-	decoded_msg = decode_msg(file_content, header->width, header->height);
-	printf("decoded_msg: %s\n", decoded_msg);
+	// decoded_msg = decode_msg(file_content, header->width, header->height);
+	// printf("decoded_msg: %s\n", decoded_msg);
 	return 0;
 }
