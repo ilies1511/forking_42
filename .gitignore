@@ -1,3 +1,6 @@
 .vscode
 .DS_Strore
 a.out
+.DS_Store
+*.dSYM/
+decoder
